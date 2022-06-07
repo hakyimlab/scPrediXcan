@@ -1,0 +1,64 @@
+baseurl: "/"
+languageCode: "en-us"
+title: "ImLab Notes"
+theme: "hugo-prose"
+# googleAnalytics: "G-8SL8WKCMYZ"
+disqusShortname: "hakyimlab"
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
+footnotereturnlinkcontents: "↩"
+paginate: 10
+
+permalinks:
+  post: "/post/:year/:month/:day/:slug/"
+
+outputs:
+  home: [html, rss, json]
+
+# some menu items were added via the `menu` option in YAML in posts
+menu:
+  header:
+    - name: Search
+      url: "#"
+      identifier: menu-search
+  footer:
+    - name: Contact
+      url: "contact"
+      weight: 1
+    - name: Categories
+      url: "/categories/"
+      weight: 2
+      pre: "optional"
+    - name: Tags
+      url: "/tags/"
+      weight: 3
+      pre: "optional"
+    - name: Suggest an edit
+      url: "#"
+      weight: 4
+      identifier: "menu-edit"
+    - name: Back to top
+      url: "#"
+
+params:
+  homePosts: 10
+  mainSections: ["post", "job"]
+  editLink: "https://github.com/hakyimlab/web-lab-notes/edit/master/content/"
+  authorDelimiter: " / "
+  pageFeatures: [+sidenotes]
+  features: [-number_sections]
+  description: >
+    Haky's daily log and other musings, built with Hugo and blogdown with the hugo-prose theme.
+  footer: >
+    &copy; 2020 Hakyimlab and authors
+  license: >
+    Text and figures are licensed under [Creative Commons Attribution CC BY
+    4.0](https://creativecommons.org/licenses/by/4.0/). The source code is
+    licensed under MIT.
+  summaryLength: 300
+
+markup:
+  highlight:
+    codeFences: false
+  goldmark:
+    renderer:
+      unsafe: true

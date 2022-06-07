@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+{{ $baseurl := .Site.BaseURL | sanitizeurl }}
+{{ $author := .Site.Params.Author }}
+{{ if .Params.Author }}
+{{ $author = .Params.Author }}
+{{ end }}
+<div class="header">
+  <h1>{{ .Title }}</h1>
+  <h2>{{ .Description }}</h2>
+</div>
+<div class="content">
+  {{ .Content }}
+</div>
+
+{{ partial "footer.html" . }}
