@@ -1,6 +1,6 @@
 baseurl: "/"
 languageCode: "en-us"
-title: "ImLab Notes"
+title: "Single Cell PrediXcan Notes"
 theme: "hugo-prose"
 # googleAnalytics: "G-8SL8WKCMYZ"
 disqusShortname: "hakyimlab"
@@ -42,7 +42,7 @@ menu:
 params:
   homePosts: 10
   mainSections: ["post", "job"]
-  editLink: "https://github.com/hakyimlab/web-lab-notes/edit/master/content/"
+  editLink: "https://github.com/hakyimlab/Single-cell-prediXcan/edit/master/content/"
   authorDelimiter: " / "
   pageFeatures: [+sidenotes]
   features: [-number_sections]
