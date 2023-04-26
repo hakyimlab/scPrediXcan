@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.302">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto_web_test - Some function test</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">quarto_web_test</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../../about.html" rel="" target="" aria-current="page">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../post/PCA_GTEx_scLiver_v2.ipynb" rel="" target="">
+ <span class="menu-text">A</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Some function test</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">all</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">DL</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">post/PCA_GTEx_scLiver_v2.ipynb</span>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../PCA_GTEx_scLiver_v3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2023-04-17-PCA for bulk-sc-merged data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../PCA_GTEx_scLiver_v4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2023-04-17-PCA for bulk-sc-merged data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#modified-version" id="toc-modified-version" class="nav-link active" data-scroll-target="#modified-version">Modified version</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Some function test</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linalg <span class="im">as</span> LA</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the activity file as activity matrices</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>acti_1 <span class="op">=</span> pd.read_csv(<span class="st">'Activity_file/activity1.tsv'</span>, sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>acti_2 <span class="op">=</span> pd.read_csv(<span class="st">'Activity_file/activity2.tsv'</span>, sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>acti_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gene</th>
+<th data-quarto-table-cell-role="th">Adipose_Subcutaneous</th>
+<th data-quarto-table-cell-role="th">Adipose_Visceral_Omentum</th>
+<th data-quarto-table-cell-role="th">Adrenal_Gland</th>
+<th data-quarto-table-cell-role="th">Artery_Aorta</th>
+<th data-quarto-table-cell-role="th">Artery_Coronary</th>
+<th data-quarto-table-cell-role="th">Artery_Tibial</th>
+<th data-quarto-table-cell-role="th">Brain_Amygdala</th>
+<th data-quarto-table-cell-role="th">Brain_Anterior_cingulate_cortex_BA24</th>
+<th data-quarto-table-cell-role="th">Brain_Caudate_basal_ganglia</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Skin_Not_Sun_Exposed_Suprapubic</th>
+<th data-quarto-table-cell-role="th">Skin_Sun_Exposed_Lower_leg</th>
+<th data-quarto-table-cell-role="th">Small_Intestine_Terminal_Ileum</th>
+<th data-quarto-table-cell-role="th">Spleen</th>
+<th data-quarto-table-cell-role="th">Stomach</th>
+<th data-quarto-table-cell-role="th">Testis</th>
+<th data-quarto-table-cell-role="th">Thyroid</th>
+<th data-quarto-table-cell-role="th">Uterus</th>
+<th data-quarto-table-cell-role="th">Vagina</th>
+<th data-quarto-table-cell-role="th">Whole_Blood</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ENSG00000223972.5</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.166403</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ENSG00000227232.5</td>
+<td>4.064030</td>
+<td>3.371110</td>
+<td>2.68549</td>
+<td>4.04762</td>
+<td>3.90076</td>
+<td>3.639630</td>
+<td>1.43859</td>
+<td>1.69285</td>
+<td>1.566050</td>
+<td>...</td>
+<td>5.932980</td>
+<td>6.13265</td>
+<td>4.193780</td>
+<td>5.926310</td>
+<td>3.062480</td>
+<td>4.702530</td>
+<td>6.272550</td>
+<td>7.190010</td>
+<td>5.745540</td>
+<td>2.64743</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ENSG00000278267.1</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ENSG00000243485.5</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.024264</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.054223</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ENSG00000237613.2</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56195</td>
+<td>ENSG00000198695.2</td>
+<td>3517.220000</td>
+<td>3598.090000</td>
+<td>6637.79000</td>
+<td>6374.49000</td>
+<td>4972.73000</td>
+<td>4635.000000</td>
+<td>9631.77000</td>
+<td>8319.14000</td>
+<td>11516.600000</td>
+<td>...</td>
+<td>8919.460000</td>
+<td>8113.22000</td>
+<td>9764.490000</td>
+<td>5477.360000</td>
+<td>9628.750000</td>
+<td>1676.590000</td>
+<td>2520.410000</td>
+<td>3644.000000</td>
+<td>2237.430000</td>
+<td>960.29100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56196</td>
+<td>ENSG00000210194.1</td>
+<td>11.903800</td>
+<td>11.203400</td>
+<td>24.41390</td>
+<td>22.65940</td>
+<td>20.58800</td>
+<td>18.257600</td>
+<td>40.58860</td>
+<td>31.35490</td>
+<td>78.695300</td>
+<td>...</td>
+<td>32.932100</td>
+<td>31.33400</td>
+<td>35.456000</td>
+<td>24.934900</td>
+<td>33.496300</td>
+<td>2.871770</td>
+<td>5.795670</td>
+<td>10.370100</td>
+<td>5.724510</td>
+<td>3.49736</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56197</td>
+<td>ENSG00000198727.2</td>
+<td>23839.100000</td>
+<td>25511.700000</td>
+<td>28799.40000</td>
+<td>12919.40000</td>
+<td>15943.20000</td>
+<td>13051.500000</td>
+<td>32931.80000</td>
+<td>28346.70000</td>
+<td>40960.000000</td>
+<td>...</td>
+<td>19058.200000</td>
+<td>17223.10000</td>
+<td>24521.300000</td>
+<td>11578.600000</td>
+<td>27193.100000</td>
+<td>15337.800000</td>
+<td>19868.500000</td>
+<td>15025.000000</td>
+<td>12803.400000</td>
+<td>2305.49000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56198</td>
+<td>ENSG00000210195.2</td>
+<td>0.616205</td>
+<td>0.697191</td>
+<td>1.50928</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.544659</td>
+<td>3.44476</td>
+<td>3.47988</td>
+<td>5.581470</td>
+<td>...</td>
+<td>0.884701</td>
+<td>1.11364</td>
+<td>0.815455</td>
+<td>0.783492</td>
+<td>0.803858</td>
+<td>0.443781</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56199</td>
+<td>ENSG00000210196.2</td>
+<td>1.429970</td>
+<td>1.192550</td>
+<td>1.78041</td>
+<td>1.57309</td>
+<td>1.63648</td>
+<td>1.950040</td>
+<td>5.67736</td>
+<td>5.40242</td>
+<td>7.071810</td>
+<td>...</td>
+<td>2.226800</td>
+<td>1.88828</td>
+<td>1.768040</td>
+<td>0.948262</td>
+<td>2.082370</td>
+<td>1.057760</td>
+<td>0.982817</td>
+<td>0.808096</td>
+<td>0.737385</td>
+<td>0.00000</td>
+</tr>
+</tbody>
+</table>
+
+<p>56200 rows × 50 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>acti_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gene</th>
+<th data-quarto-table-cell-role="th">Adipose_Subcutaneous</th>
+<th data-quarto-table-cell-role="th">Adipose_Visceral_Omentum</th>
+<th data-quarto-table-cell-role="th">Adrenal_Gland</th>
+<th data-quarto-table-cell-role="th">Artery_Aorta</th>
+<th data-quarto-table-cell-role="th">Artery_Coronary</th>
+<th data-quarto-table-cell-role="th">Artery_Tibial</th>
+<th data-quarto-table-cell-role="th">Brain_Amygdala</th>
+<th data-quarto-table-cell-role="th">Brain_Anterior_cingulate_cortex_BA24</th>
+<th data-quarto-table-cell-role="th">Brain_Caudate_basal_ganglia</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Skin_Not_Sun_Exposed_Suprapubic</th>
+<th data-quarto-table-cell-role="th">Skin_Sun_Exposed_Lower_leg</th>
+<th data-quarto-table-cell-role="th">Small_Intestine_Terminal_Ileum</th>
+<th data-quarto-table-cell-role="th">Spleen</th>
+<th data-quarto-table-cell-role="th">Stomach</th>
+<th data-quarto-table-cell-role="th">Testis</th>
+<th data-quarto-table-cell-role="th">Thyroid</th>
+<th data-quarto-table-cell-role="th">Uterus</th>
+<th data-quarto-table-cell-role="th">Vagina</th>
+<th data-quarto-table-cell-role="th">Whole_Blood</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ENSG00000223972.5</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>1.000000</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ENSG00000227232.5</td>
+<td>0.612245</td>
+<td>0.489796</td>
+<td>0.387755</td>
+<td>0.591837</td>
+<td>0.571429</td>
+<td>0.551020</td>
+<td>0.061224</td>
+<td>0.204082</td>
+<td>0.142857</td>
+<td>...</td>
+<td>0.877551</td>
+<td>0.897959</td>
+<td>0.653061</td>
+<td>0.857143</td>
+<td>0.448980</td>
+<td>0.755102</td>
+<td>0.918367</td>
+<td>1.000000</td>
+<td>0.836735</td>
+<td>0.367347</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ENSG00000278267.1</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ENSG00000243485.5</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.897959</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>1.000000</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ENSG00000237613.2</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56195</td>
+<td>ENSG00000198695.2</td>
+<td>0.244898</td>
+<td>0.265306</td>
+<td>0.591837</td>
+<td>0.551020</td>
+<td>0.408163</td>
+<td>0.367347</td>
+<td>0.877551</td>
+<td>0.734694</td>
+<td>0.959184</td>
+<td>...</td>
+<td>0.775510</td>
+<td>0.673469</td>
+<td>0.897959</td>
+<td>0.469388</td>
+<td>0.857143</td>
+<td>0.040816</td>
+<td>0.142857</td>
+<td>0.285714</td>
+<td>0.102041</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56196</td>
+<td>ENSG00000210194.1</td>
+<td>0.306122</td>
+<td>0.285714</td>
+<td>0.612245</td>
+<td>0.591837</td>
+<td>0.551020</td>
+<td>0.448980</td>
+<td>0.897959</td>
+<td>0.775510</td>
+<td>1.000000</td>
+<td>...</td>
+<td>0.795918</td>
+<td>0.755102</td>
+<td>0.877551</td>
+<td>0.653061</td>
+<td>0.816327</td>
+<td>0.020408</td>
+<td>0.102041</td>
+<td>0.244898</td>
+<td>0.081633</td>
+<td>0.040816</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56197</td>
+<td>ENSG00000198727.2</td>
+<td>0.469388</td>
+<td>0.612245</td>
+<td>0.734694</td>
+<td>0.183673</td>
+<td>0.285714</td>
+<td>0.224490</td>
+<td>0.857143</td>
+<td>0.714286</td>
+<td>0.938776</td>
+<td>...</td>
+<td>0.367347</td>
+<td>0.346939</td>
+<td>0.510204</td>
+<td>0.102041</td>
+<td>0.693878</td>
+<td>0.265306</td>
+<td>0.387755</td>
+<td>0.244898</td>
+<td>0.163265</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56198</td>
+<td>ENSG00000210195.2</td>
+<td>0.367347</td>
+<td>0.448980</td>
+<td>0.714286</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.306122</td>
+<td>0.877551</td>
+<td>0.897959</td>
+<td>0.979592</td>
+<td>...</td>
+<td>0.571429</td>
+<td>0.612245</td>
+<td>0.530612</td>
+<td>0.489796</td>
+<td>0.510204</td>
+<td>0.244898</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56199</td>
+<td>ENSG00000210196.2</td>
+<td>0.326531</td>
+<td>0.285714</td>
+<td>0.469388</td>
+<td>0.387755</td>
+<td>0.428571</td>
+<td>0.530612</td>
+<td>0.918367</td>
+<td>0.877551</td>
+<td>0.959184</td>
+<td>...</td>
+<td>0.591837</td>
+<td>0.510204</td>
+<td>0.448980</td>
+<td>0.183673</td>
+<td>0.551020</td>
+<td>0.244898</td>
+<td>0.204082</td>
+<td>0.142857</td>
+<td>0.102041</td>
+<td>0.020408</td>
+</tr>
+</tbody>
+</table>
+
+<p>56200 rows × 50 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get the effect sizes of specific gene-snp pair</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_effect_size(database, gene, snp):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Get a list of effect sizes for a certain gene-snp pair</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    myCursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    myCursor.execute(<span class="st">"SELECT slope FROM simulation WHERE gene_id = ? and variant_id = ?"</span>, (gene, snp))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    thelist <span class="op">=</span> myCursor.fetchall()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#get all the values into a list</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    slope_list <span class="op">=</span> []</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(thelist)):</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        slope_list.append(thelist[i][<span class="dv">0</span>])</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> slope_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>database <span class="op">=</span> <span class="st">"/home/charles_zhou/Imlab/singleXcan/SQlite_db/GTEx_eqtl_simulation.db"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gene <span class="op">=</span> <span class="st">"ENSG00000227232.5"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>snp <span class="op">=</span> <span class="st">"chr1_64764_C_T_b38"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>myCursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>myCursor.execute(<span class="st">"SELECT slope, tissue_id FROM simulation WHERE gene_id = ? and variant_id = ?"</span>, (gene, snp))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>thelist <span class="op">=</span> myCursor.fetchall()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> []</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tissue <span class="op">=</span> []</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> thelist:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    size.append(i[<span class="dv">0</span>])</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    tissue.append(i[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(thelist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>list</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>thelist[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[('0.500106', 'Nerve_Tibial'),
+ ('0.523131', 'Cells_Cultured_fibroblasts'),
+ ('0.368848', 'Thyroid'),
+ ('0.477162', 'Brain_Cerebellum'),
+ ('0.658996', 'Vagina')]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(size[:<span class="dv">5</span>])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tissue[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['0.500106', '0.523131', '0.368848', '0.477162', '0.658996']
+['Nerve_Tibial', 'Cells_Cultured_fibroblasts', 'Thyroid', 'Brain_Cerebellum', 'Vagina']</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>database <span class="op">=</span> <span class="st">"/home/charles_zhou/Imlab/singleXcan/SQlite_db/GTEx_eqtl_simulation.db"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>gene <span class="op">=</span> <span class="st">"ENSG00000227232.5"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>snp <span class="op">=</span> <span class="st">"chr1_666028_G_A_b38"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>myCursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>myCursor.execute(<span class="st">"SELECT slope, tissue_id FROM simulation WHERE gene_id = ? and variant_id = ?"</span>, (gene, snp))</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>thelist1 <span class="op">=</span> myCursor.fetchall()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>thelist1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>[('0.521815', 'Nerve_Tibial'),
+ ('0.518518', 'Cells_Cultured_fibroblasts'),
+ ('0.328992', 'Thyroid'),
+ ('0.29027', 'Brain_Cerebellum'),
+ ('0.831715', 'Vagina'),
+ ('0.498983', 'Colon_Transverse'),
+ ('0.411513', 'Skin_Sun_Exposed_Lower_leg'),
+ ('0.31442', 'Prostate'),
+ ('0.882495', 'Uterus'),
+ ('0.489662', 'Whole_Blood'),
+ ('0.54536', 'Pancreas'),
+ ('0.560902', 'Stomach'),
+ ('0.204284', 'Brain_Cerebellar_Hemisphere'),
+ ('0.339506', 'Skin_Not_Sun_Exposed_Suprapubic'),
+ ('0.528564', 'Breast_Mammary_Tissue'),
+ ('0.371935', 'Adipose_Subcutaneous'),
+ ('0.518862', 'Spleen'),
+ ('0.377052', 'Artery_Tibial'),
+ ('0.467178', 'Esophagus_Mucosa'),
+ ('0.83324', 'Ovary'),
+ ('0.305966', 'Brain_Caudate_basal_ganglia'),
+ ('0.292745', 'Brain_Hypothalamus'),
+ ('0.450967', 'Artery_Aorta'),
+ ('0.335347', 'Liver'),
+ ('0.402672', 'Heart_Left_Ventricle'),
+ ('0.439049', 'Muscle_Skeletal'),
+ ('0.328266', 'Heart_Atrial_Appendage'),
+ ('0.365362', 'Esophagus_Gastroesophageal_Junction'),
+ ('0.204086', 'Brain_Hippocampus'),
+ ('0.49808', 'Testis'),
+ ('0.287463', 'Adipose_Visceral_Omentum'),
+ ('0.417584', 'Artery_Coronary'),
+ ('-0.0341428', 'Brain_Substantia_nigra'),
+ ('0.46293', 'Brain_Putamen_basal_ganglia'),
+ ('0.371326', 'Lung'),
+ ('0.0198652', 'Cells_EBV_transformed_lymphocytes'),
+ ('0.799537', 'Small_Intestine_Terminal_Ileum'),
+ ('0.474047', 'Adrenal_Gland'),
+ ('0.548315', 'Minor_Salivary_Gland'),
+ ('0.254845', 'Brain_Spinal_cord_cervical_c_1'),
+ ('0.628172', 'Kidney_Cortex'),
+ ('0.236225', 'Brain_Amygdala'),
+ ('0.334719', 'Brain_Nucleus_accumbens_basal_ganglia'),
+ ('0.396141', 'Brain_Frontal_Cortex_BA9'),
+ ('0.307222', 'Brain_Anterior_cingulate_cortex_BA24'),
+ ('0.439501', 'Esophagus_Muscularis'),
+ ('0.413058', 'Brain_Cortex'),
+ ('0.55017', 'Colon_Sigmoid'),
+ ('0.413836', 'Pituitary')]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the activity list at first</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>activity_list1 <span class="op">=</span> []</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>((acti_2.loc[acti_2[<span class="st">'gene'</span>] <span class="op">==</span> <span class="st">"ENSG00000227232.5"</span>]).to_numpy()[<span class="dv">0</span>])):</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        activity_list1.append((acti_2.loc[acti_2[<span class="st">'gene'</span>] <span class="op">==</span> <span class="st">"ENSG00000227232.5"</span>]).to_numpy()[<span class="dv">0</span>][i])</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>acti_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gene</th>
+<th data-quarto-table-cell-role="th">Adipose_Subcutaneous</th>
+<th data-quarto-table-cell-role="th">Adipose_Visceral_Omentum</th>
+<th data-quarto-table-cell-role="th">Adrenal_Gland</th>
+<th data-quarto-table-cell-role="th">Artery_Aorta</th>
+<th data-quarto-table-cell-role="th">Artery_Coronary</th>
+<th data-quarto-table-cell-role="th">Artery_Tibial</th>
+<th data-quarto-table-cell-role="th">Brain_Amygdala</th>
+<th data-quarto-table-cell-role="th">Brain_Anterior_cingulate_cortex_BA24</th>
+<th data-quarto-table-cell-role="th">Brain_Caudate_basal_ganglia</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Skin_Not_Sun_Exposed_Suprapubic</th>
+<th data-quarto-table-cell-role="th">Skin_Sun_Exposed_Lower_leg</th>
+<th data-quarto-table-cell-role="th">Small_Intestine_Terminal_Ileum</th>
+<th data-quarto-table-cell-role="th">Spleen</th>
+<th data-quarto-table-cell-role="th">Stomach</th>
+<th data-quarto-table-cell-role="th">Testis</th>
+<th data-quarto-table-cell-role="th">Thyroid</th>
+<th data-quarto-table-cell-role="th">Uterus</th>
+<th data-quarto-table-cell-role="th">Vagina</th>
+<th data-quarto-table-cell-role="th">Whole_Blood</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ENSG00000223972.5</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>1.000000</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ENSG00000227232.5</td>
+<td>0.612245</td>
+<td>0.489796</td>
+<td>0.387755</td>
+<td>0.591837</td>
+<td>0.571429</td>
+<td>0.551020</td>
+<td>0.061224</td>
+<td>0.204082</td>
+<td>0.142857</td>
+<td>...</td>
+<td>0.877551</td>
+<td>0.897959</td>
+<td>0.653061</td>
+<td>0.857143</td>
+<td>0.448980</td>
+<td>0.755102</td>
+<td>0.918367</td>
+<td>1.000000</td>
+<td>0.836735</td>
+<td>0.367347</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ENSG00000278267.1</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ENSG00000243485.5</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.897959</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>1.000000</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ENSG00000237613.2</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>...</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56195</td>
+<td>ENSG00000198695.2</td>
+<td>0.244898</td>
+<td>0.265306</td>
+<td>0.591837</td>
+<td>0.551020</td>
+<td>0.408163</td>
+<td>0.367347</td>
+<td>0.877551</td>
+<td>0.734694</td>
+<td>0.959184</td>
+<td>...</td>
+<td>0.775510</td>
+<td>0.673469</td>
+<td>0.897959</td>
+<td>0.469388</td>
+<td>0.857143</td>
+<td>0.040816</td>
+<td>0.142857</td>
+<td>0.285714</td>
+<td>0.102041</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56196</td>
+<td>ENSG00000210194.1</td>
+<td>0.306122</td>
+<td>0.285714</td>
+<td>0.612245</td>
+<td>0.591837</td>
+<td>0.551020</td>
+<td>0.448980</td>
+<td>0.897959</td>
+<td>0.775510</td>
+<td>1.000000</td>
+<td>...</td>
+<td>0.795918</td>
+<td>0.755102</td>
+<td>0.877551</td>
+<td>0.653061</td>
+<td>0.816327</td>
+<td>0.020408</td>
+<td>0.102041</td>
+<td>0.244898</td>
+<td>0.081633</td>
+<td>0.040816</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56197</td>
+<td>ENSG00000198727.2</td>
+<td>0.469388</td>
+<td>0.612245</td>
+<td>0.734694</td>
+<td>0.183673</td>
+<td>0.285714</td>
+<td>0.224490</td>
+<td>0.857143</td>
+<td>0.714286</td>
+<td>0.938776</td>
+<td>...</td>
+<td>0.367347</td>
+<td>0.346939</td>
+<td>0.510204</td>
+<td>0.102041</td>
+<td>0.693878</td>
+<td>0.265306</td>
+<td>0.387755</td>
+<td>0.244898</td>
+<td>0.163265</td>
+<td>0.020408</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56198</td>
+<td>ENSG00000210195.2</td>
+<td>0.367347</td>
+<td>0.448980</td>
+<td>0.714286</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.306122</td>
+<td>0.877551</td>
+<td>0.897959</td>
+<td>0.979592</td>
+<td>...</td>
+<td>0.571429</td>
+<td>0.612245</td>
+<td>0.530612</td>
+<td>0.489796</td>
+<td>0.510204</td>
+<td>0.244898</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+<td>0.020408</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56199</td>
+<td>ENSG00000210196.2</td>
+<td>0.326531</td>
+<td>0.285714</td>
+<td>0.469388</td>
+<td>0.387755</td>
+<td>0.428571</td>
+<td>0.530612</td>
+<td>0.918367</td>
+<td>0.877551</td>
+<td>0.959184</td>
+<td>...</td>
+<td>0.591837</td>
+<td>0.510204</td>
+<td>0.448980</td>
+<td>0.183673</td>
+<td>0.551020</td>
+<td>0.244898</td>
+<td>0.204082</td>
+<td>0.142857</td>
+<td>0.102041</td>
+<td>0.020408</td>
+</tr>
+</tbody>
+</table>
+
+<p>56200 rows × 50 columns</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>activity_vector <span class="op">=</span> []</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tiss <span class="kw">in</span> tissue:</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    activity_vector.append((acti_2.loc[acti_2[<span class="st">'gene'</span>] <span class="op">==</span> <span class="st">"ENSG00000227232.5"</span>])[tiss].to_list()[<span class="dv">0</span>])</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(activity_vector[:<span class="dv">40</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(acti_2.loc[acti_2[<span class="st">'gene'</span>] <span class="op">==</span> <span class="st">"ENSG00000227232.5"</span>])[tissue[<span class="dv">3</span>]].to_list()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>[0.816326530612245]</code></pre>
+</div>
+</div>
+<section id="modified-version" class="level3">
+<h3 class="anchored" data-anchor-id="modified-version">Modified version</h3>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">## put the unmodified functions here</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get the full list of gene_id</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_gene_id (database):</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Get the full list of genes</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    myCursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    myCursor.execute(<span class="st">"SELECT DISTINCT gene_id FROM simulation"</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    thelist <span class="op">=</span> myCursor.fetchall()</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#get all the values into a list</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    gene_list <span class="op">=</span> []</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(thelist)):</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        gene_list.append(thelist[i][<span class="dv">0</span>])</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gene_list  </span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get the full list of variant_id for specific gene in original table (not prioritized list)</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_snp_id (database, gene):</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="co">    Get the full list of genes</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>    conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database)</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>    myCursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>    myCursor.execute(<span class="st">"SELECT DISTINCT variant_id FROM simulation WHERE gene_id = ?"</span>, (gene,))</span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>    thelist <span class="op">=</span> myCursor.fetchall()</span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">#get all the values into a list</span></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>    snp_list <span class="op">=</span> []</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(thelist)):</span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>        snp_list.append(thelist[i][<span class="dv">0</span>])</span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> snp_list </span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get all gene-snp pairs from the database</span></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_gene_snp_pairs(database):</span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the full list genes in the table "eqtl":</span></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a>    gene_list <span class="op">=</span> get_gene_id(database)</span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For each gene, get the full list of snps:</span></span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>    gene_snp_list <span class="op">=</span> []</span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> gene_list:</span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a>        snp_list <span class="op">=</span> get_snp_id(database, i)</span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> snp_list:</span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a>            gene_snp_list.append((i,j))</span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gene_snp_list</span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to compute the mean-square-error</span></span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MSE(y_test, x_test, bhat):</span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(y_test)</span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> ((LA.norm(x_test <span class="op">*</span> bhat <span class="op">-</span> y_test))<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>N</span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a><span class="co"># define a funtion to compute the MSE with mean of training set as a predictor</span></span>
+<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MSE_2(y_test, y_train):</span>
+<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(y_test)</span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a>    train_mean <span class="op">=</span> np.mean(y_train)</span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a>    mean_list <span class="op">=</span> np.array([train_mean] <span class="op">*</span> N)</span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span>  ((LA.norm(mean_list <span class="op">-</span> y_test))<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>N</span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modified part</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get the effect sizes of specific gene-snp pair</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_effect_size(database, gene, snp):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Get a list of effect sizes for a certain gene-snp pair</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    myCursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    myCursor.execute(<span class="st">"SELECT slope, tissue_id FROM simulation WHERE gene_id = ? and variant_id = ?"</span>, (gene, snp))</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    thelist <span class="op">=</span> myCursor.fetchall()</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> []</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    tissue <span class="op">=</span> []</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> thelist:</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        size.append(i[<span class="dv">0</span>])</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>        tissue.append(i[<span class="dv">1</span>])</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> size, tissue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modified part</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get the "activity" vector for specific gene</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gene_activity_vector(activity_matrix, gene, tissue_vector):</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    activity_vector <span class="op">=</span> []</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tiss <span class="kw">in</span> tissue_vector:</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        activity_vector.append((acti_2.loc[acti_2[<span class="st">'gene'</span>] <span class="op">==</span> gene])[tiss].to_list()[<span class="dv">0</span>])</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> activity_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modified part</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to run regression and output the results with gene_snp_list and activity_matrix on hand</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_regression(gene_snp_list, activity_matrix):</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a list to insert the mse_variance pair</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    mse_var_pair <span class="op">=</span> []</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pairs <span class="kw">in</span> gene_snp_list:</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># get the effect size list</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        effect_size <span class="op">=</span> get_effect_size(database, pairs[<span class="dv">0</span>], pairs[<span class="dv">1</span>])[<span class="dv">0</span>]</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        tissue_list <span class="op">=</span> get_effect_size(database, pairs[<span class="dv">0</span>], pairs[<span class="dv">1</span>])[<span class="dv">1</span>]</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># change string into float number</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        effect_size <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>, effect_size))</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># get the activity vector</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>        activity_list <span class="op">=</span> gene_activity_vector(activity_matrix, pairs[<span class="dv">0</span>], tissue_list)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(effect_size) <span class="op">!=</span> <span class="bu">len</span>(activity_list):</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># trainning set</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>            x_train <span class="op">=</span> activity_list[<span class="dv">0</span>:<span class="dv">39</span>]</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>            y_train <span class="op">=</span> effect_size[<span class="dv">0</span>:<span class="dv">39</span>]</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>            <span class="co"># test set</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>            x_test <span class="op">=</span> activity_list[<span class="dv">40</span>:<span class="dv">48</span>]</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>            y_test <span class="op">=</span> effect_size[<span class="dv">40</span>:<span class="dv">48</span>]</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>            <span class="co"># run the regression</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> linear_model.LinearRegression(fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>            x_train_0 <span class="op">=</span> np.array(x_train).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>            y_train_0 <span class="op">=</span> np.array(y_train).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>            model.fit(x_train_0, y_train_0)</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>            beta_hat <span class="op">=</span> model.coef_ <span class="co"># This is the estimated independent effect size</span></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>            <span class="co"># get the MSE and variance of the test_set</span></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>            mse <span class="op">=</span> MSE(y_test, x_test, beta_hat)</span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>            test_var <span class="op">=</span> MSE_2(y_test, y_train)</span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>            <span class="co"># record the mes_var pair</span></span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>            mse_var_pair.append((mse, test_var))</span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mse_var_pair</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform the regression and let's see what happens then</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>database <span class="op">=</span> <span class="st">"/home/charles_zhou/Imlab/singleXcan/SQlite_db/GTEx_eqtl_simulation.db"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>gene_snp_list <span class="op">=</span> get_gene_snp_pairs(database)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="147">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(gene_snp_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="147">
+<pre><code>25709</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gene_snp_list1 <span class="op">=</span> gene_snp_list[:<span class="dv">5</span>]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>gene_snp_list1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>[('ENSG00000227232.5', 'chr1_1000018_G_A_b38'),
+ ('ENSG00000227232.5', 'chr1_1000079_A_G_b38'),
+ ('ENSG00000227232.5', 'chr1_1000112_G_T_b38'),
+ ('ENSG00000227232.5', 'chr1_1000291_C_G_b38'),
+ ('ENSG00000227232.5', 'chr1_1000335_C_T_b38')]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(<span class="bu">len</span>(gene_snp_list)<span class="op">/</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<pre><code>257</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mse1_mse2_pair <span class="op">=</span> []</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">len</span>(gene_snp_list)<span class="op">/</span><span class="dv">100</span>)):</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(gene_snp_list) <span class="op">-</span> i <span class="op">*</span> <span class="dv">100</span> <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>        gene_snp_list_part <span class="op">=</span> gene_snp_list[i<span class="op">*</span><span class="dv">100</span> : (i<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span>]</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>        gene_snp_list_part <span class="op">=</span> gene_snp_list[i<span class="op">*</span><span class="dv">100</span> : <span class="bu">len</span>(gene_snp_list)]</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    mse1_mse2_pair.append(linear_regression(gene_snp_list_part, acti_2))</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Complete </span><span class="sc">{:.2%}</span><span class="st"> of the computation"</span>.<span class="bu">format</span>(i<span class="op">/</span><span class="bu">int</span>(<span class="bu">len</span>(gene_snp_list)<span class="op">/</span><span class="dv">100</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mse1_mse2_modi <span class="op">=</span> []</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(mse1_mse2_pair)):</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> pair <span class="kw">in</span> mse1_mse2_pair[i]:</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        mse1_mse2_modi.append(pair)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(mse1_mse2_modi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="137">
+<pre><code>25700</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="146">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(mse1_mse2_modi[<span class="dv">0</span>][<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="146">
+<pre><code>'0.11533776445401991'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="140">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_mse_var(mse_var_pair, path):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    textfile <span class="op">=</span> <span class="bu">open</span>(path, <span class="st">"w"</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    textfile.write(<span class="st">"MSE"</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="op">+</span> <span class="st">"test_var"</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> element <span class="kw">in</span> mse_var_pair:</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>        textfile.write(<span class="bu">str</span>(element[<span class="dv">0</span>]) <span class="op">+</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(element[<span class="dv">1</span>]) <span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    textfile.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"MSE1_MSE2.csv"</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>save_mse_var(mse1_mse2_modi , path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mse0 <span class="op">=</span> []</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>var0 <span class="op">=</span> []</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pair <span class="kw">in</span> mse1_mse2_modi:</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    mse0.append(pair[<span class="dv">0</span>])</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    var0.append(pair[<span class="dv">1</span>])</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>mse0_modi <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> mse0 <span class="cf">if</span> math.isnan(x) <span class="op">==</span> <span class="va">False</span>]</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>var0_modi <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> var0 <span class="cf">if</span> math.isnan(x) <span class="op">==</span> <span class="va">False</span>]</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>effect_size_min <span class="op">=</span> np.<span class="bu">min</span>(var0_modi)</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>effect_size_max <span class="op">=</span> np.<span class="bu">max</span>(var0_modi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>plt.plot(var0, mse0, <span class="st">'o'</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>plt.plot([effect_size_min, effect_size_max], [effect_size_min, effect_size_max], <span class="st">'k-'</span>, color <span class="op">=</span> <span class="st">'r'</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regression result of 1364 random gene-snp pairs"</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"MSE: our predictor"</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"MSE: mean of trainning set as the predictor"</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "k-" (-&gt; color='k'). The keyword argument will take precedence.
+  plt.plot([effect_size_min, effect_size_max], [effect_size_min, effect_size_max], 'k-', color = 'r')
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Function_modification_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="126">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>percent <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(mse1_mse2_modi)):</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mse1_mse2_modi[i][<span class="dv">0</span>] <span class="op">&lt;=</span> mse1_mse2_modi[i][<span class="dv">1</span>]:</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        percent <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(percent<span class="op">/</span><span class="bu">len</span>(mse1_mse2_modi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.11501945525291829</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(mse0_modi)):</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mse0_modi[i] <span class="op">&lt;=</span> var0_modi[i]:</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>        count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>count<span class="op">/</span><span class="bu">len</span>(mse0_modi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="135">
+<pre><code>0.46913188382796384</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
