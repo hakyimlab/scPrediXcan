@@ -10,4 +10,4 @@ listing:
 page-layout: full
 ---
 
-WIP's Repo [link](https://github.com/hakyimlab/Work-in-progress-Charles)
+WIP's Repo [link](https://github.com/hakyimlab/Single-cell-prediXcan)
