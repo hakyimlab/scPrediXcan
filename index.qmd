@@ -1,8 +1,13 @@
 ---
-title: "quarto_web_test_v123"
+title: "Work-in-progress-Charles"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
 ---
 
-## This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-See [Section](PCA_GTEx_scLiver_v2.ipynb) for more details on visualizing model diagnostics.
+WIP's Repo [link](https://github.com/hakyimlab/Work-in-progress-Charles)
