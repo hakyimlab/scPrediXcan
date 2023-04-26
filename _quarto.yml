@@ -9,7 +9,7 @@ website:
         text: Home
       - about.qmd
       - text: "A"
-        file: post/PCA_GTEx_scLiver_v2.ipynb
+        file: PCA_GTEx_scLiver_v2.ipynb
 
   sidebar:
     style: "docked"
@@ -20,7 +20,7 @@ website:
           - section: "DL"
             contents:
               - about.qmd
-              - post/PCA_GTEx_scLiver_v2.ipynb
+              - PCA_GTEx_scLiver_v2.ipynb
           - section: "Basics"
             contents:
               - PCA_GTEx_scLiver_v3.ipynb
