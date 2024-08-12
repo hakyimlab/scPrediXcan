@@ -13,7 +13,7 @@ The framework is detailed in the [bioRxiv preprint]().
 
 #
 ### Setup and installation
-You can create a new conda environment named 'scPrediXcan' using scPrediXcan_env.yml file.
+scPrediXcan mainly requires Python, Nextflow and some deep learning packages like Pytorch and Tensorflow. You can install all the packages and softwares needed by creating a new conda environment named **scPrediXcan** using scPrediXcan_env.yml file.
 ```bash
 conda env create -f scPrediXcan_env.yml
 conda activate scPrediXcan
