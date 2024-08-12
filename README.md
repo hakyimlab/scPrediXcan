@@ -6,7 +6,9 @@
 #
 ### Description 
 Single-cell PrediXcan (scPrediXcan) is a framework designed to perform Transcriptome-Wide Association Studies (TWAS) at the cell-type level using single-cell data. This framework utilizes GWAS summary statistics with single-cell RNA-seq data to assess the association between gene expression and disease risk.
+
 The workflow of scPrediXcan framework consists of three steps: 1) training a deep learning model named ctPred for epigenomics-to-expression prediction at cell type level, 2) linearizing the ctPred into a SNP-based elastic net model for downstream association tests using GWAS summary statistics, and 3) performing the association tests between genes and trait of interest. 
+
 The framework is detailed in the [bioRxiv preprint]().
 
 #
