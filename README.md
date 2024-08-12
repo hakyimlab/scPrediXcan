@@ -62,7 +62,7 @@ The detailed descriptions of the pipeline and the used data/output are [here](ht
 #
 #### Step3: Performing association test between genes and traits 
 
-scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: a **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step-3:
+scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: a transcriptome model sqlite database (i.g., l-ctPred), a GWAS/Meta Analysis summary statistics, and SNP covariance matrices. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step-3:
 
 1) Clone the S-PrediXcan repository and go to the software folder.
 ```bash
@@ -73,8 +73,8 @@ cd MetaXcan/software
 2) Run the High-Level S-PrediXcan Script
 ```bash
 ./SPrediXcan.py \
---model_db_path data/DGN-WB_0.5.db \
---covariance data/covariance.DGN-WB_0.5.txt.gz \
+--model_db_path 'l-ctPred_celli.db' \
+--covariance 'covariance.txt.gz' \
 --gwas_folder data/GWAS \
 --gwas_file_pattern ".*gz" \
 --snp_column SNP \
@@ -82,12 +82,12 @@ cd MetaXcan/software
 --non_effect_allele_column A2 \
 --beta_column BETA \
 --pvalue_column P \
---output_file results/test.csv
+--output_file 'results/TWAS_result.csv'
 ```
 
 Pipeline details:
 
-This should take less than a minute on a 3GHZ computer. For the full specification of command line parameters, you can check the [wiki](https://github.com/hakyimlab/MetaXcan/wiki/MetaXcan's-Command-Line-Reference) and the [turtorial](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). The output csv file is the TWAS result, and the detailed descriptions of each column are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial)
+This step should take less than a minute on a 3GHZ computer. For the full specification of command line parameters, you can check the [wiki](https://github.com/hakyimlab/MetaXcan/wiki/MetaXcan's-Command-Line-Reference) and the [turtorial](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). The output csv file is the TWAS result, and the detailed descriptions of each column are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial)
 
 You can download example data [here](https://uchicago.box.com/s/us7qhue3juubq66tktpogeansahxszg9). This may take a few minutes depending on your connection: it has to download approximately 200Mb worth of data. Downloaded data will include all the input data needed.
 
