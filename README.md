@@ -1,5 +1,4 @@
 ## scPrediXcan: Leveraging Single-Cell Data for Cell-Type–Specific Transcriptome-Wide Association Studies Using Transfer Learning  
-#
 <p align="center">
   <img height="560" src="Figures/scPrediXcan_workflow.png">
 </p>
@@ -16,6 +15,7 @@ Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type
 
 #### Step1: Training the ctPred model  
 
+#
 #### Step2: Linearining the ctPred into l-ctPred  
 scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization.
 Here are the detailed procedures of step2:
@@ -42,10 +42,12 @@ nextflow run ./main.nf \
 -resume \
 
 ```
+The output of this step has a Transcriptome Model Database (i.g., l-ctPred), and a SNP covariance matrices file. Those files will be used for the association step.
+
 #
 #### Step3: Performing association test between genes and traits 
 
-scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: an appropiate **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
+scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: a **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
 
 1) Clone the S-PrediXcan repository.
 ```bash
@@ -98,33 +100,7 @@ The example command parameters mean:
 * `--pvalue_column` Tells the program the name of a column containing -PValue for each SNP- in the input GWAS files.
 * `--output_file` Path where results will be saved to.
 
-Its output is a CSV file that looks like:
-
-```
-gene,gene_name,zscore,effect_size,pvalue,var_g,pred_perf_r2,pred_perf_pval,pred_perf_qval,n_snps_used,n_snps_in_cov,n_snps_in_model
-ENSG00000150938,CRIM1,4.190697619877402,0.7381499095142079,2.7809807629839122e-05,0.09833448081630237,0.13320775358,1.97496173512e-30,7.47907447189e-30,37,37,37
-...
-```
-Where each row is a gene's association result:
-* `gene`: a gene's id: as listed in the Tissue Transcriptome model.
-Ensemble Id for most gene model releases. Can also be a intron's id for splicing model releases.
-* `gene_name`: gene name as listed by the Transcriptome Model, typically HUGO for a gene. It can also be an intron's id.
-* `zscore`: S-PrediXcan's association result for the gene, typically HUGO for a gene.
-* `effect_size`: S-PrediXcan's association effect size for the gene. Can only be computed when `beta` from the GWAS is used.
-* `pvalue`: P-value of the aforementioned statistic.
-* `pred_perf_r2`: (cross-validated) R2 of tissue model's correlation to gene's measured transcriptome (prediction performance). Not all model families have this (e.g. MASHR).
-* `pred_perf_pval`: pval of tissue model's correlation to gene's measured transcriptome (prediction performance). Not all model families have this (e.g. MASHR).
-* `pred_perf_qval`: qval of tissue model's correlation to gene's measured transcriptome (prediction performance). Not all model families have this (e.g. MASHR).
-* `n_snps_used`: number of snps from GWAS that got used in S-PrediXcan analysis
-* `n_snps_in_cov`: number of snps in the covariance matrix
-* `n_snps_in_model`: number of snps in the model
-* `var_g`: variance of the gene expression, calculated as `W' * G * W`
-(where `W` is the vector of SNP weights in a gene's model,
-`W'` is its transpose, and `G` is the covariance matrix)
-
-If `--additional_output` is used when running S-PrediXcan, you'll get two additional columns:
-* `best_gwas_p`: the highest p-value from GWAS snps used in this model
-* `largest_weight`: the largest (absolute value) weight in this model
+The output csv file is the TWAS result, and the detailed descriptions of each column are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial)
 
 
 # 
