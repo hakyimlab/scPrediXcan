@@ -12,6 +12,7 @@ Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type
 You can create a new conda environment named 'scPrediXcan' using scPrediXcan_env.yml file.
 ```bash
 conda env create -f scPrediXcan_env.yml
+conda activate scPrediXcan
 
 ```
 
