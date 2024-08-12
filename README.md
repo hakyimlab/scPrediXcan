@@ -17,8 +17,8 @@ Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type
 
 #
 #### Step2: Linearining the ctPred into l-ctPred  
-scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization.
-Here are the detailed procedures of step2:
+scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization. In this step, we utilize the genotype data from 448 Geuvadis individuals along with ctPred-predicted gene expression profiles to fit an elastic-net model for the corresponding cell type. In principle, alternative genotype reference panels can also be employed at this stage. Here is a nextflow pipeline for l-ctPred generation. The inputs include a genotype file and a ctPred-predicted cell-type-specific gene expression file. The outputs consist of a transcriptome model SQLite database (i.e., l-ctPred) and a SNP covariance matrix file. These output files are intended for use in the final association analysis step.
+Here are the detailed procedures of step-2:
 
 1) Install nextflow into the environment.
 ```bash
@@ -42,12 +42,12 @@ nextflow run ./main.nf \
 -resume \
 
 ```
-The output of this step has a Transcriptome Model Database (i.g., l-ctPred), and a SNP covariance matrices file. Those files will be used for the association step.
+The detailed descriptions of the pipeline and the used data/output are [here](https://github.com/hakyimlab/PredictDb-nextflow/blob/master/docs/usage.md).
 
 #
 #### Step3: Performing association test between genes and traits 
 
-scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: a **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
+scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: a **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step-3:
 
 1) Clone the S-PrediXcan repository.
 ```bash
@@ -83,22 +83,8 @@ tar -xzvpf sample_data.tar.gz
 --pvalue_column P \
 --output_file results/test.csv
 ```
-This should take less than a minute on a 3GHZ computer. For the full specification of command line parameters, you can check the [wiki](https://github.com/hakyimlab/MetaXcan/wiki/MetaXcan's-Command-Line-Reference).
 
-
-The example command parameters mean:
-
-* `--model_db_path` Path to tissue transriptome model
-* `--covariance` Path to file containing covariance information. This covariance should have information related to the tissue transcriptome model.
-* `--gwas_folder` Folder containing GWAS summary statistics data.
-* `--gwas_file_pattern` This option allows the program to select which files from the input to use based on their name.
-...This allows to ignore several support files that might be generated at your GWAS analysis, such as plink logs.
-* `--snp_column` Argument with the name of the column containing the RSIDs.
-* `--effect_allele_column` Argument with the name of the column containing the effect allele (i.e. the one being regressed on).
-* `--non_effect_allele_column` Argument with the name of the column containing the non effect allele.
-* `--beta_column` Tells the program the name of a column containing -phenotype beta data for each SNP- in the input GWAS files.
-* `--pvalue_column` Tells the program the name of a column containing -PValue for each SNP- in the input GWAS files.
-* `--output_file` Path where results will be saved to.
+This should take less than a minute on a 3GHZ computer. For the full specification of command line parameters, you can check the [wiki](https://github.com/hakyimlab/MetaXcan/wiki/MetaXcan's-Command-Line-Reference) and the [turtorial](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial).
 
 The output csv file is the TWAS result, and the detailed descriptions of each column are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial)
 
