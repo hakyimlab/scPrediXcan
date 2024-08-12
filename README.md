@@ -4,15 +4,15 @@
   <img height="560" src="Figures/scPrediXcan_workflow.png">
 </p>
 
-### Description
-# 
+#
+### Description 
 Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type level using single-cell data. The workflow of scPrediXcan framework consists of three steps: 1) training a deep learning model named ctPred for epigenomics-to-expression prediction at cell type level, 2) linearizing the ctPred into a SNP-based elastic net model for downstream association tests using GWAS summary statistics, and 3) performing the association tests between genes and trait of interest.
 
-### Setup and installation
 #
+### Setup and installation
 
+#
 ### Usage
-# 
 
 #### Step1: Training the ctPred model  
 
@@ -42,7 +42,7 @@ nextflow run ./main.nf \
 -resume \
 
 ```
-
+#
 #### Step3: Performing association test between genes and traits 
 
 scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: an appropiate **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
@@ -127,6 +127,5 @@ If `--additional_output` is used when running S-PrediXcan, you'll get two additi
 * `largest_weight`: the largest (absolute value) weight in this model
 
 
-
+# 
 ### Citation
-#
