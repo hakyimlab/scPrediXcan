@@ -20,7 +20,7 @@ Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type
 
 #### Step3: Performing association test between genes and traits 
 
-The following example assumes that you have **python 3.5** (or higher), **numpy**, and **scipy** installed.
+scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The details of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: an appropiate **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
 
 1) Clone this repository.
 ```bash
@@ -35,7 +35,7 @@ $ cd MetaXcan/software
 3) Download example [data](https://uchicago.box.com/s/us7qhue3juubq66tktpogeansahxszg9).
 
 This may take a few minutes depending on your connection: it has to download approximately 200Mb worth of data.
-Downloaded data will include an appropiate **Transcriptome Model Database**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**.
+Downloaded data will include an appropiate **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**.
 
 Extract it with:
 ```bash
