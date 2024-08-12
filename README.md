@@ -17,12 +17,37 @@ Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type
 #### Step1: Training the ctPred model  
 
 #### Step2: Linearining the ctPred into l-ctPred  
+scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization.
+Here are the detailed procedures of step2:
+
+1) Install nextflow into the environment.
+```bash
+conda install nextflow
+```
+2) Clone the PredictDb-nextflow repository.
+```bash
+$ git clone https://github.com/hakyimlab/PredictDb-nextflow.git
+```
+
+3) Run the PredictDb nextflow pipeline.
+```bash
+
+nextflow run ./main.nf \
+--gene_annotation 'Gene_anno.txt' \
+--snp_annotation 'snp_annot.txt' \
+--genotype 'genotype_file' \
+--gene_exp 'ctPred_predicted_gene_expression.csv' \
+--outdir results \
+--keepIntermediate \
+-resume \
+
+```
 
 #### Step3: Performing association test between genes and traits 
 
-scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The details of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: an appropiate **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
+scPrediXcan uses Summary-PrediXcan(S-PrediXcan) to run the association test. The detailed description of S-PrediXcan are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). In this step, the input data include: an appropiate **Transcriptome Model Database (i.g., l-ctPred)**, a **GWAS/Meta Analysis summary statistics**, and **SNP covariance matrices**. The l-ctPred database and the SNP covariance matrices are obtained from the last step. Here are the detailed procedures of step3:
 
-1) Clone this repository.
+1) Clone the S-PrediXcan repository.
 ```bash
 $ git clone https://github.com/hakyimlab/MetaXcan
 ```
