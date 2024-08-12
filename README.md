@@ -30,7 +30,7 @@ ctPred is a multilayer perceptron to predict gene expressions at pseudobulk leve
 python ctPred_train.py --parameters ctPred_train.json --cell_file 'training_data.csv'
 
 ```
-
+For the details, check the code and tutorial [here](https://github.com/hakyimlab/scPrediXcan/tree/master/Scripts/ctPred).
 
 #
 #### Step2: Linearizing the ctPred into l-ctPred  
