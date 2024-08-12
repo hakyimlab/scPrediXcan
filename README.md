@@ -14,9 +14,15 @@ Single-cell PrediXcan(scPrediXcan) is framework to perform TWAS at the cell-type
 ### Usage
 
 #### Step1: Training the ctPred model  
+ctPred is a multilayer perceptron to predict gene expressions at pseudobulk level from gene epigenomic representations(i.g., Enformer-output epigenomic features). The inputs of this step are a population-average gene expression file and a gene epigenomic features file. They are combined into a single training data csv file since both are relatively small. The output of this step is a pt file storing the model weights.
+
+```bash
+python ctPred_train.py --parameters ctPred_train.json --cell_file 'training_data.csv'
+
+```
 
 #
-#### Step2: Linearining the ctPred into l-ctPred  
+#### Step2: Linearizing the ctPred into l-ctPred  
 scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization. In this step, we utilize the genotype data from 448 Geuvadis individuals along with ctPred-predicted gene expression profiles to fit an elastic-net model for the corresponding cell type. In principle, alternative genotype reference panels can also be employed at this stage. Here is a nextflow pipeline for l-ctPred generation. The inputs include a genotype file and a ctPred-predicted cell-type-specific gene expression file. The outputs consist of a transcriptome model SQLite database (i.e., l-ctPred) and a SNP covariance matrix file. These output files are intended for use in the final association analysis step.
 Here are the detailed procedures of step-2:
 
