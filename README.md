@@ -11,6 +11,8 @@ The workflow of scPrediXcan framework consists of three steps: 1) training a dee
 
 The framework is detailed in the [bioRxiv preprint]().
 
+You can download the cell type specific prediction models and covariances [in links from here](https://predictdb.org/post/2024/10/14/scpredixcan-prediction-models/)
+
 #
 ### Setup and installation
 scPrediXcan mainly requires Python, Nextflow and some deep learning packages like Pytorch and Tensorflow. You can install all the packages and softwares needed by creating a new conda environment named **scPrediXcan** using scPrediXcan_env.yml file.
