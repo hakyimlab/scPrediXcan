@@ -26,6 +26,7 @@ conda activate scPrediXcan
 ### Usage
 
 #### Step1: Training the ctPred model  
+!!Note that if you just want to use the pre-trained models of given cell types for TWAS in certain diseases, please skip step1,2 and directly do step3 with pre-trained l-ctPred models.
 ctPred is a multilayer perceptron to predict gene expressions at pseudobulk level from gene epigenomic representations(i.g., Enformer-output epigenomic features). The inputs of this step are a population-average gene expression file and a gene epigenomic features file. They are combined into a single training data csv file since both are relatively small. The output of this step is a pt file storing the model weights.
 
 ```bash
