@@ -9,7 +9,7 @@ Single-cell PrediXcan (scPrediXcan) is a framework designed to perform Transcrip
 
 The workflow of scPrediXcan framework consists of three steps: 1) training a deep learning model named ctPred for epigenomics-to-expression prediction at cell type level, 2) linearizing the ctPred into a SNP-based elastic net model for downstream association tests using GWAS summary statistics, and 3) performing the association tests between genes and trait of interest. 
 
-The framework is detailed in the [bioRxiv preprint]().
+The framework is detailed in the [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/2024.11.11.623049v1).
 
 You can download the cell type specific prediction models and covariances [in links from here](https://predictdb.org/post/2024/10/14/scpredixcan-prediction-models/)
 
@@ -96,4 +96,4 @@ You can download example data [here](https://uchicago.box.com/s/us7qhue3juubq66t
 
 # 
 ### Citation
-If you find this code useful, we would appreciate it if you cite the following publication:
+If you find this code useful, we would appreciate it if you cite the [following publication](https://www.biorxiv.org/content/10.1101/2024.11.11.623049v1)
