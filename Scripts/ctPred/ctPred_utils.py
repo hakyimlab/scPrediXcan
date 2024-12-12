@@ -8,10 +8,29 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import os
+from scipy.stats import pearsonr
+import numpy as np
+from sklearn.linear_model import LinearRegression
 mpl.rcParams['pdf.fonttype'] = 42
 
 # specify the device that you'll use cpu or gpu
-device = torch.device('cpu')
+device = torch.device('cuda')
+
+
+def input_prep(epi_p, exp_mat_p):
+    test_p = exp_mat_p
+    test = pd.read_csv(test_p, index_col = 0)
+    test = test.drop_duplicates(subset='gene_name')
+    test = test.dropna(subset='gene_name')
+
+    epi = pd.read_csv(epi_p, index_col=0)
+
+    test_mat = test.merge(epi, on = 'gene_name', how = 'left')
+    exp_col = test_mat['mean_expression'] 
+    test_mat = test_mat.drop(columns = ['mean_expression'])
+    test_mat['mean_expression'] = exp_col
+
+    return test_mat
 
 
 def data_prepare(gen_data, train_set, val_set, test_set, is_normalization=True):
@@ -32,11 +51,19 @@ def data_prepare(gen_data, train_set, val_set, test_set, is_normalization=True):
     test_exp = torch.tensor(test_data.iloc[:, -1].values, dtype=torch.float32).to(device)
 
     if is_normalization:
-        # normalize the input data (this step is not necessary but recommanded)
-        scaler = StandardScaler().fit(train_epi)
-        train_epi = torch.tensor(scaler.transform(train_epi), dtype=torch.float32).to(device)
-        val_epi = torch.tensor(scaler.transform(val_epi), dtype=torch.float32).to(device)
-        test_epi = torch.tensor(scaler.transform(test_epi), dtype=torch.float32).to(device)
+        # Calculate mean and standard deviation on the training data
+        train_mean = train_epi.mean(dim=0)
+        train_std = train_epi.std(dim=0)
+
+        # Normalize the input data
+        train_epi = (train_epi - train_mean) / train_std
+        val_epi = (val_epi - train_mean) / train_std
+        test_epi = (test_epi - train_mean) / train_std
+
+        # Ensure the data is in torch.float32 and on the correct device
+        train_epi = train_epi.to(dtype=torch.float32, device=device)
+        val_epi = val_epi.to(dtype=torch.float32, device=device)
+        test_epi = test_epi.to(dtype=torch.float32, device=device)
 
     return train_epi, train_exp, val_epi, val_epi, val_exp, test_epi, test_exp
 
@@ -48,12 +75,12 @@ def dataloader(features, labels, batch_size, is_train = True):
     return data.DataLoader(dataset, batch_size, shuffle = is_train)
 
 
-# scPred model
-class scPred(nn.Module):
+# ctPred model
+class ctPred(nn.Module):
     def __init__(self, **kwargs):
         super().__init__()
         
-        scPred_defaults = {
+        ctPred_defaults = {
             'num_layers' : 4,
             'input_dim' : 5313,
             'hidden_dim' : 64,
@@ -64,9 +91,9 @@ class scPred(nn.Module):
             'random_seed' : 1024
         }
 
-        scPred_defaults.update(kwargs)
+        ctPred_defaults.update(kwargs)
 
-        for key, value in scPred_defaults.items():
+        for key, value in ctPred_defaults.items():
             setattr(self, key, value)
 
 
@@ -97,7 +124,7 @@ class scPred(nn.Module):
 
 
 
-def plot_loss_curve(train_losses, val_losses, epochs, fig_folder):
+def plot_loss_curve(train_losses, val_losses, epochs, cell_type, fig_folder):
 
     plt.figure(figsize=(8, 6))
     plt.plot(range(1, epochs + 1), train_losses, label='Train_loss')
@@ -108,7 +135,7 @@ def plot_loss_curve(train_losses, val_losses, epochs, fig_folder):
     plt.legend()
     plt.gca().spines['top'].set_visible(False)
     plt.gca().spines['right'].set_visible(False)
-    plt.savefig(os.path.join(fig_folder, 'loss_curve_new.pdf'), bbox_inches = 'tight')
+    plt.savefig(os.path.join(fig_folder, f'{cell_type}_loss.pdf'), bbox_inches = 'tight')
     #plt.show()
 
 
@@ -116,7 +143,7 @@ def save_model(model, path):
     torch.save(model.state_dict(), path)
 
 
-def scPred_training(model, train_data_iter, train_epi, train_exp, val_epi, val_exp, fig_folder, epochs=80, plot_loss=True, model_path = 'scPred.pt'):
+def ctPred_training(model, train_data_iter, train_epi, train_exp, val_epi, val_exp, cell_type, fig_folder, epochs=80, plot_loss=True, model_path = 'ctPred.pt'):
     model.compile()
     optimizer = model.optimizer
 
@@ -150,22 +177,41 @@ def scPred_training(model, train_data_iter, train_epi, train_exp, val_epi, val_e
         
 
     if plot_loss:
-        plot_loss_curve(train_losses, val_losses, epochs, fig_folder)
+        plot_loss_curve(train_losses, val_losses, epochs, cell_type, fig_folder)
 
 
-def plot_prediction(model, test_features, test_labels, fig_folder):
+
+def plot_prediction(model, test_features, test_labels, cell_type, fig_folder):
     model.eval()
 
+    predictions = model(test_features).detach()
+    if test_labels.is_cuda:  # Check if test_labels is on a GPU
+        test_labels = test_labels.to(predictions.device)
+    
+    predictions_np = predictions.cpu().numpy()
+    test_labels_np = test_labels.cpu().numpy()
+
+    correlation, _ = pearsonr(test_labels_np, predictions_np)
+
+    regression_model = LinearRegression()
+    regression_model.fit(predictions_np, test_labels_np)
+
+    line_y = regression_model.predict(test_labels_np.reshape(-1, 1))
+
     plt.figure(figsize=(8, 6))
-    plt.scatter(test_labels, model(test_features).data, s=5)
-    plt.xlabel('Observed expressions')
-    plt.ylabel('Predicted expressions')
-    plt.title('Model performance on the test set')
+    plt.scatter(test_labels_np, predictions_np, s=5, label='Data Points', color='skyblue')
+    plt.plot(test_labels_np, line_y, color='grey', linestyle='--', label='Best Fit Line')
+
+    plt.xlabel('Observed Expressions')
+    plt.ylabel('Predicted Expressions')
+    plt.title(f'Model Performance on Test Set \n Pearson correlation: {correlation[0]:.2f}')
+    plt.legend()
 
     plt.gca().spines['top'].set_visible(False)
     plt.gca().spines['right'].set_visible(False)
-    plt.savefig(os.path.join(fig_folder, 'scPred_prediction_new.pdf'), bbox_inches = 'tight')
-    #plt.show()
+
+    plt.savefig(os.path.join(fig_folder, f'{cell_type}_prediction.pdf'), bbox_inches='tight')
+    # plt.show()
 
 
 def load_model(filepath, model_class):

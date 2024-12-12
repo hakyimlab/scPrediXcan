@@ -34,6 +34,17 @@ ctPred is a multilayer perceptron to predict gene expressions at pseudobulk leve
 python ctPred_train.py --parameters ctPred_train.json --cell_file 'training_data.csv'
 
 ```
+
+Here is an example of the training data [file](./Scripts/ctPred/Example_training_data.csv), which is a bit different from the example training data file in the [tutorial](./Scripts/ctPred/Tutorial.ipynb). In the tutorial, the expression data has already been combined to the epigenomics data; here, you only need to provide the expression data and specify the path of epigenomics data path in the json file, and the script will combine them.
+
+or 
+
+
+```bash
+python ctPred_train.py --parameters ctPred_train.json --data_dir 'The_path_of_the_folder' # inside the folder, you have many training data files (.csv) for different cell types
+
+```
+
 For the details, check the code and tutorial [here](https://github.com/hakyimlab/scPrediXcan/tree/master/Scripts/ctPred). The Enformer-predicted epigenomic features of protein-coding genes are shared [here](https://uchicago.app.box.com/folder/289080191619?s=wgyt3wqfjezsqwjhndcceky6nivil8kh).
 
 #
