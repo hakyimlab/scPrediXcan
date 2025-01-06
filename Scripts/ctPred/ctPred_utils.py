@@ -17,6 +17,9 @@ mpl.rcParams['pdf.fonttype'] = 42
 device = torch.device('cuda')
 
 
+## This is the code to convert the raw expression values to rank-based values (percentile)
+# cell_i_matx['mean_expression'] = cell_i_matx['mean_expression'].rank(method = 'average', pct=True)
+
 def input_prep(epi_p, exp_mat_p):
     test_p = exp_mat_p
     test = pd.read_csv(test_p, index_col = 0)
