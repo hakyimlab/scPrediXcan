@@ -51,6 +51,8 @@ For the details, check the code and tutorial [here](https://github.com/hakyimlab
 #### Step2: Linearizing the ctPred into l-ctPred  
 scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization. In this step, we utilize the genotype data from 448 Geuvadis individuals along with ctPred-predicted gene expression profiles to fit an elastic-net model for the corresponding cell type. In principle, alternative genotype reference panels can also be employed at this stage. 
 
+This is our [pipeline](https://github.com/hakyimlab/shared_pipelines/tree/main/enformer_pipeline) to generate personalized epigenomic features using Enformer with genotype data (.vcf file). Once users calculate the personalized epigenomics, please use the ctPred models from step 1 to get the in-silico personalized gene expressions. Then, users can generate l-ctPred according to the following instructions.
+
 Here is a nextflow pipeline for l-ctPred generation. The inputs include a genotype file and a ctPred-predicted cell-type-specific gene expression file. The outputs consist of a transcriptome model SQLite database (i.e., l-ctPred) and a SNP covariance matrix file. These output files are intended for use in the final association analysis step.
 Here are the detailed procedures of step-2:
 
