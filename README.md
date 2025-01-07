@@ -111,7 +111,7 @@ You can download example data [here](https://uchicago.box.com/s/us7qhue3juubq66t
 #
 ### Example files:
 
-Some example input/output files from step1 to step3 are in this [box folder](https://uchicago.app.box.com/folder/301527232721).
+Some example input/output files from step1 to step3 are in this [box folder](https://uchicago.box.com/s/hsrb9zenyhpckm6cemxl96if02uy8peu).
 
 
 # 
