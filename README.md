@@ -53,6 +53,8 @@ scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3
 
 This is our [pipeline](https://github.com/hakyimlab/shared_pipelines/tree/main/enformer_pipeline) to generate personalized epigenomic features using Enformer with genotype data (.vcf file). Once users calculate the personalized epigenomics, please use the ctPred models from step 1 to get the in-silico personalized gene expressions. Then, users can generate l-ctPred according to the following instructions.
 
+In our anaysis, we used the genotype data of Geuvadis individuals from 1000G Genome project. The genotype data we used is [here](https://doi.org/10.5281/zenodo.15587873). Besides, we provided the Enformer-predicted epigenomic features of protein-coding genes for Geuvadis individuals [here](./Scripts/Enformer_epigenomic_features/Geuvadis_individuals_epigenome.txt). Currently, we uploaded a few batches of individuals' Enformer-predicted epigenomic features, and we will keep uploading the rest of them.
+
 Here is a nextflow pipeline for l-ctPred generation. The inputs include a genotype file and a ctPred-predicted cell-type-specific gene expression file. The outputs consist of a transcriptome model SQLite database (i.e., l-ctPred) and a SNP covariance matrix file. These output files are intended for use in the final association analysis step.
 Here are the detailed procedures of step-2:
 
