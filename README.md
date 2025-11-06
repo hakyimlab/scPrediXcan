@@ -108,12 +108,12 @@ Pipeline details:
 
 This step should take less than a minute on a 3GHZ computer. For the full specification of command line parameters, you can check the [wiki](https://github.com/hakyimlab/MetaXcan/wiki/MetaXcan's-Command-Line-Reference) and the [turtorial](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). The output csv file is the TWAS result, and the detailed descriptions of each column are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial)
 
-You can download example data [here](https://uchicago.box.com/s/us7qhue3juubq66tktpogeansahxszg9). This may take a few minutes depending on your connection: it has to download approximately 200Mb worth of data. Downloaded data will include all the input data needed.
+For this step, you can download example data [here](https://uchicago.box.com/s/us7qhue3juubq66tktpogeansahxszg9). This may take a few minutes depending on your connection: it has to download approximately 200Mb worth of data. Downloaded data will include all the input data needed.
 
 #
 ### Example files:
 
-Some example input/output files from step1 to step3 are in this [box folder](https://uchicago.box.com/s/hsrb9zenyhpckm6cemxl96if02uy8peu).
+For step1 to step3, example input/output files are in this [box folder](https://uchicago.box.com/s/hsrb9zenyhpckm6cemxl96if02uy8peu) or [Zenodo project](https://doi.org/10.5281/zenodo.17544851).
 
 
 # 
