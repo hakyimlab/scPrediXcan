@@ -1,6 +1,5 @@
 {
     "Model_path": "/The_path_you_put_model/Model",
-    "epigenomics_path": "/The_path_you_put_epigenomics/Gene_epigenomics_v0.csv",
     "fig_path": "/The_path_you_put_plots/Plots", 
     "training_set": ["chr1", "chr10", "chr13", "chr15", "chr16", "chr17", "chr18", "chr19", "chr2", "chr21", "chr22", "chr3", "chr4", "chr6", "chr8", "chr9", "chrX", "chrY"],
     "valid_set": ["chr11", "chr14", "chr7"],

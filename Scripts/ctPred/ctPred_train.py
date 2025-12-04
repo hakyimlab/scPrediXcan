@@ -26,11 +26,10 @@ def ctPred_train(exp_matrix_p, params):
     train_set = params.get("training_set")
     val_set = params.get("valid_set")
     test_set = params.get("test_set")
-    epi_p = params.get("epigenomics_path")
+    epi_p = exp_matrix_p 
 
     cell_type = os.path.basename(exp_matrix_p).split('.csv')[0]
-    data = pd.read_csv(epi_p, index_col = 0) # assume that the epigenomics and expression files are merged already, otherwise, try the next line of code
-    # data = input_prep(epi_p, exp_matrix_p) # if epigenomics and expression files are not merged, merge them first
+    data = pd.read_csv(epi_p, index_col = 0) # assume that the epigenomics and expression files are merged already
 
     train_epi, train_exp, val_epi, val_epi, val_exp, test_epi, test_exp = data_prepare(data, train_set, val_set, test_set)
     train_data_iter = dataloader(train_epi, train_exp, batch_size=1000)
