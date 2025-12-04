@@ -14,7 +14,7 @@ from sklearn.linear_model import LinearRegression
 mpl.rcParams['pdf.fonttype'] = 42
 
 # specify the device that you'll use cpu or gpu
-device = torch.device('cuda')
+device = torch.device('cpu')
 
 
 ## This is the code to convert the raw expression values to rank-based values (percentile)
@@ -119,7 +119,9 @@ class ctPred(nn.Module):
         return F.mse_loss(y_true.reshape(-1, 1), y_pred.reshape(-1, 1))
 
     def forward(self, x):
-        return self.net(x)
+        x = self.net(x)
+        x = F.relu(x)  
+        return x / (1 + F.softplus(x - 1))
     
     def compile(self):
         self.optimizer = optim.Adam(self.parameters(), lr = self.learning_rate, weight_decay = self.reg_lambda)
@@ -192,7 +194,7 @@ def plot_prediction(model, test_features, test_labels, cell_type, fig_folder):
         test_labels = test_labels.to(predictions.device)
     
     predictions_np = predictions.cpu().numpy()
-    test_labels_np = test_labels.cpu().numpy()
+    test_labels_np = test_labels.cpu().numpy().reshape(predictions_np.shape)
 
     correlation, _ = pearsonr(test_labels_np, predictions_np)
 
