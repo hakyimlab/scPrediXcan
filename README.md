@@ -15,7 +15,7 @@ You can download the cell type specific prediction models and covariances [in li
 
 #
 ### Setup and installation
-scPrediXcan mainly requires Python, Nextflow and some deep learning packages like Pytorch and Tensorflow. You can install all the packages and softwares needed by creating a new conda environment named **scPrediXcan** using scPrediXcan_env.yml file.
+scPrediXcan mainly requires Python, Nextflow and some deep learning packages like Pytorch and Tensorflow. You can install all the packages and softwares needed by creating a new conda environment named **scPrediXcan** using scPrediXcan_env.yml file if you are using a Linux system. If you are using a MacOS system, use scPrediXcan_mac_env.yml.
 ```bash
 conda env create -f scPrediXcan_env.yml
 conda activate scPrediXcan
