@@ -24,7 +24,9 @@ dependencies:
   - r-rsqlite
   - r-dplyr
   - r-data.table
+  - r-optparse
   - pip:
+      - zenodo_get
       - torch
       - torchvision
       - torchaudio
