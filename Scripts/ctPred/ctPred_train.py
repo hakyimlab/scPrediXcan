@@ -38,6 +38,8 @@ def ctPred_train(exp_matrix_p, params):
     ctPred_test = ctPred().to(device)
 
     saved_path = os.path.join(Model_path, f'{cell_type}_ctPred.pt')
+    print(f"Trained model saved to {saved_path}")
+    
     ctPred_training(ctPred_test, train_data_iter, train_epi, train_exp, val_epi, val_exp, cell_type, fig_path, epochs=100, model_path=saved_path)
 
     plot_prediction(ctPred_test, test_epi, test_exp, cell_type, fig_path)
