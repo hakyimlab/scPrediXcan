@@ -13,6 +13,11 @@ The framework is detailed in the [paper](https://www.cell.com/cell-genomics/full
 
 You can download the cell type specific prediction models and covariances [in links from here](https://predictdb.org/post/2024/10/14/scpredixcan-prediction-models/)
 
+
+### Updated protocol
+A more detailed protocol for the scPrediXcan pipeline is available [here](https://www.sciencedirect.com/science/article/pii/S2666166725007129?via%3Dihub). In the meantime, for a more hands-on approach, we also provide a [demo Jupyter notebook](./Scripts/protocol_demo/protocol_demo.ipynb) that covers all three steps from scratch.
+These protocol/demo are mostly identical to the pipeline below, but offers more detail and several tiny updates.
+
 #
 ### Setup and installation
 scPrediXcan mainly requires Python, Nextflow and some deep learning packages like Pytorch and Tensorflow. You can install all the packages and softwares needed by creating a new conda environment named **scPrediXcan** using scPrediXcan_env.yml file if you are using a Linux system. If you are using a MacOS system, use scPrediXcan_mac_env.yml.
@@ -46,6 +51,8 @@ python ctPred_train.py --parameters ctPred_train.json --data_dir 'The_path_of_th
 ```
 
 For the details, check the code and tutorial [here](https://github.com/hakyimlab/scPrediXcan/tree/master/Scripts/ctPred). The Enformer-predicted epigenomic features of protein-coding genes are shared [here](https://uchicago.app.box.com/folder/289080191619?s=wgyt3wqfjezsqwjhndcceky6nivil8kh).
+
+The code for running inference with trained model is described in the [protocol](https://www.sciencedirect.com/science/article/pii/S2666166725007129?via%3Dihub) and [demo](./Scripts/protocol_demo/protocol_demo.ipynb). Note: the inference template code assumes to use the model with is_normalization=False because our benchmarking tests revealed no significant difference compared to using normalization.
 
 #
 #### Step2: Linearizing the ctPred into l-ctPred  
@@ -101,6 +108,7 @@ cd MetaXcan/software
 --non_effect_allele_column A2 \
 --beta_column BETA \
 --pvalue_column P \
+--keep_non_rsid \
 --output_file 'results/TWAS_result.csv'
 ```
 

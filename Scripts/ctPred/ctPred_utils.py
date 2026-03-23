@@ -36,7 +36,7 @@ def input_prep(epi_p, exp_mat_p):
     return test_mat
 
 
-def data_prepare(gen_data, train_set, val_set, test_set, is_normalization=True):
+def data_prepare(gen_data, train_set, val_set, test_set, is_normalization=False):
     # split the data
     train_data = gen_data[gen_data['chromo'].isin(train_set)]
     val_data = gen_data[gen_data['chromo'].isin(val_set)]
